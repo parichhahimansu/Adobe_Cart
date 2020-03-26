@@ -1,5 +1,6 @@
 import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY, GET_ITEMS, SORT_ITEMS, FILTERED_ITEMS } from './action-types/cart-actions'
 
+// Load intial items
 export const getItems = (payload) => {
     return {
         type: GET_ITEMS,
@@ -35,7 +36,7 @@ export const addQuantity=(id)=>{
         id
     }
 }
-
+// Sort items
 export const sortItems = (sortType, payload) => {
     return {
         type: SORT_ITEMS,
@@ -43,7 +44,7 @@ export const sortItems = (sortType, payload) => {
         payload
     }
 }
-
+// Filter items
 export const filteredItems = (newValue, payload) => {
     return {
         type: FILTERED_ITEMS,
