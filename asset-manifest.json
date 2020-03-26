@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Adobe_cart/static/css/main.664710c0.chunk.css",
+    "main.js": "/Adobe_cart/static/js/main.ebad8155.chunk.js",
+    "main.js.map": "/Adobe_cart/static/js/main.ebad8155.chunk.js.map",
+    "runtime-main.js": "/Adobe_cart/static/js/runtime-main.1e763c13.js",
+    "runtime-main.js.map": "/Adobe_cart/static/js/runtime-main.1e763c13.js.map",
+    "static/css/2.5a510433.chunk.css": "/Adobe_cart/static/css/2.5a510433.chunk.css",
+    "static/js/2.11ec776b.chunk.js": "/Adobe_cart/static/js/2.11ec776b.chunk.js",
+    "static/js/2.11ec776b.chunk.js.map": "/Adobe_cart/static/js/2.11ec776b.chunk.js.map",
+    "index.html": "/Adobe_cart/index.html",
+    "precache-manifest.e82ba8193b04ad8d62dd61c479c7e1a4.js": "/Adobe_cart/precache-manifest.e82ba8193b04ad8d62dd61c479c7e1a4.js",
+    "service-worker.js": "/Adobe_cart/service-worker.js",
+    "static/css/2.5a510433.chunk.css.map": "/Adobe_cart/static/css/2.5a510433.chunk.css.map",
+    "static/css/main.664710c0.chunk.css.map": "/Adobe_cart/static/css/main.664710c0.chunk.css.map",
+    "static/js/2.11ec776b.chunk.js.LICENSE.txt": "/Adobe_cart/static/js/2.11ec776b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1e763c13.js",
+    "static/css/2.5a510433.chunk.css",
+    "static/js/2.11ec776b.chunk.js",
+    "static/css/main.664710c0.chunk.css",
+    "static/js/main.ebad8155.chunk.js"
+  ]
+}
