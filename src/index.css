@@ -25,7 +25,6 @@ code {
   width: 300px;
 }
 .card .card-image .card-title{
-  color: black;
   font-weight: 400
 }
 .cart{
@@ -132,6 +131,6 @@ input[type=text] {
   cursor: pointer;
 }
 
-.makeStyles-grow-1 a {
+.toolbar a {
   color:#fff;
 }

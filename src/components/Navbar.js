@@ -84,15 +84,15 @@ const useStyles = makeStyles(theme => ({
     return(
         <div className={classes.grow}>
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar className="toolbar">
                     <IconButton
                         edge="start"
                         color="inherit"
                     >
-                        <Link to="/" ><Star /></Link>
+                        <Link to="/Adobe_Cart" ><Star /></Link>
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        <Link to="/" >Adobe Cart</Link>
+                        <Link to="/Adobe_Cart" >Adobe Cart</Link>
                     </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
