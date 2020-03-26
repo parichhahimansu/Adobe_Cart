@@ -126,30 +126,6 @@ const useStyles = makeStyles(theme => ({
           </div>
         </Toolbar>
       </AppBar>
-      
-                    {/* <Link to="/" className="brand-logo"> Adobe Cart</Link> */}
-                    {/* <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                        <SearchIcon />
-                        </div>
-                        <InputBase
-                        placeholder="Search…"
-                        classes={{
-                            root: classes.inputRoot,
-                            input: classes.inputInput,
-                        }}
-                        inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
-                    <ul className="right">
-                        <li><Link to="/"><i className="material-icons">home</i></Link></li>
-                        <li><Link to="/cart" className={notify_cart}>
-                            <i className="material-icons">shopping_cart</i></Link>
-                        </li>
-                    </ul>
-                </div>
-            </div>  
-        </nav> */}
         </div>
     )
 }
