@@ -10,17 +10,6 @@ var that;
 
  class Home extends Component{
 
-    constructor (props) {
-        super(props);
-
-        this.state = {
-            value: [150, 700]
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-        
-    }
-
     //Add item to Cart
     handleClick = (id)=>{
         this.props.addToCart(id); 
@@ -33,13 +22,22 @@ var that;
         axios.get('https://api.myjson.com/bins/qzuzi')
         .then(function (response) {
             // handle success
-            response.data.min = 
-            that.props.getItems(response.data);
+            that.manipulateItems(response.data);
+            // that.props.getItems(response.data);
         })
         .catch(function (error) {
             // handle error
             console.log(error);
         });
+    }
+
+    manipulateItems = (data) => {
+        data.map((item) => {
+            item.discountPrice = (item.price/100)*item.discount;
+            item.newPrice = item.price - item.discountPrice;
+        })
+
+        this.props.getItems(data);
     }
 
     handleSort = (type) => {
@@ -58,22 +56,18 @@ var that;
     };
 
     render(){
-        let itemList, min, max ;
+        let itemList;
 
         if(this.props.items.length) {
             const { items } = this.props;
-            let newValue = this.state.value;
 
-            min = this.props.items.reduce((min, b) => Math.min(min, b.price), this.props.items[0].price);
-            max = this.props.items.reduce((max, b) => Math.max(max, b.price), this.props.items[0].price);
-
-            let filteredItems = items.filter((item) => {
-                if(item.price < newValue[1] && item.price > newValue[0] ) {
-                    return item;
-                }
-            });
+            // let filteredItems = items.filter((item) => {
+            //     if(item.price < newValue[1] && item.price > newValue[0] ) {
+            //         return item;
+            //     }
+            // });
             
-            itemList = filteredItems.map(item=>{
+            itemList = items.map(item=>{
 
                 let quantity = "0";
                 this.props.addedItems.map(addedItem => {
@@ -89,8 +83,9 @@ var that;
                         </div>
 
                         <div className="card-content">
-                            <p><b>{item.discount} % Off</b></p>
-                            <p><b>Price: {item.price}$</b></p>
+                            <p><b>Price: {item.newPrice}$</b></p>
+                            <p><b>{item.price} </b></p>
+                            <p><b>{item.discount} % Off </b></p>
                         </div>
 
                         <div className="card-action">
@@ -114,35 +109,23 @@ var that;
         return(
             <div className="container">
                 <div>
-                    <h4 className="header-title">Adobe Products</h4>
+                    {/* <h4 className="header-title">Adobe Products</h4> */}
                     <HomeSummary/>
-                </div>
-                <div className="slider-box">
-                    <Typography id="non-linear-slider" gutterBottom>
-                        Price Range
-                    </Typography>
-                    <Slider
-                        min = {min}
-                        max = {max}
-                        value={this.state.value}
-                        onChange={this.handleChange}
-                        valueLabelDisplay="auto"
-                        aria-labelledby="range-slider"
-                    />
-                </div>
-                <div className="sort-box">
-                    <Typography id="sort-by" gutterBottom>
-                        Sort By
-                    </Typography>
-                    <Link color="primary" underline="hover" onClick={() => this.handleSort("asc")}>
-                        Price -- High To Low
-                    </Link>
-                    <Link color="primary" underline="hover" onClick={() => this.handleSort("dsc")}>
-                        Price -- Low To High
-                    </Link>
-                    <Link color="primary" underline="hover" onClick={() => this.handleSort("dcn")}>
-                        Discount
-                    </Link>
+                
+                    <div className="sort-box">
+                        <Typography id="sort-by" gutterBottom>
+                            Sort By
+                        </Typography>
+                        <Link color="primary" underline="hover" onClick={() => this.handleSort("asc")}>
+                            Price -- High To Low
+                        </Link>
+                        <Link color="primary" underline="hover" onClick={() => this.handleSort("dsc")}>
+                            Price -- Low To High
+                        </Link>
+                        <Link color="primary" underline="hover" onClick={() => this.handleSort("dcn")}>
+                            Discount
+                        </Link>
+                    </div>
                 </div>
                 <div className="box">
                     {/* Render item in a box */}

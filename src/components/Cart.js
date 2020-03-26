@@ -61,9 +61,10 @@ class Cart extends Component{
                     <ul className="collection">
                         {addedItems}
                     </ul>
+                    <Summary /> 
                 </div>  : <h5>No items added to Cart</h5>
                 }
-                <Summary />          
+                        
             </div>
        )
     }

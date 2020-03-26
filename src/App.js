@@ -4,22 +4,19 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Cart from './components/Cart'
 
-class App extends Component {
-  render() {
+const App = (props) => {
     return (
        <BrowserRouter>
             <div className="App">
-            
               <Navbar/>
-                <Switch>
-                    <Route exact path="/Adobe_Cart" component={Home}/>
-                    <Route path="/cart" component={Cart}/>
-                  </Switch>
+              <Switch>
+                  <Route exact path="/Adobe_Cart" component={Home}/>
+                  <Route path="/cart" component={Cart}/>
+              </Switch>
              </div>
        </BrowserRouter>
       
     );
-  }
 }
 
 export default App;
