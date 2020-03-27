@@ -57,7 +57,7 @@ class Cart extends Component{
             <div className="container">
                 {this.props.items.length ?
                 <div className="cart">
-                    <h5>You have ordered:</h5>
+                    <h5>My Cart ({addedItems.length}) :</h5>
                     <ul className="collection">
                         {addedItems}
                     </ul>
