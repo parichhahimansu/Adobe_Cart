@@ -163,6 +163,11 @@ input[type=text] {
   display: inline-block;
   margin-right: 6em !important;
   vertical-align: top;
+  width:20em;
+}
+
+.collection .collection-item:nth-child(2) {
+  border: none;
 }
 
 .cart ul.collection {
@@ -175,4 +180,15 @@ input[type=text] {
 }
 .drawer-btn a{
       color: #fff;
-    }
+}
+
+.cart .collection .collection-item .cart-det-item {
+  display: inline-block;
+  width: 120px;
+}
+
+.cart .collection .collection-item .cart-det-price {
+  text-align: right;
+  display: inline-block;
+  width: 120px;
+}
