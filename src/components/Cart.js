@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeItem,addQuantity,subtractQuantity} from './actions/cartAction'
 import Summary from './Summary'
+import Image from './Image'
 
 // A cart component will show the items added to cart
 class Cart extends Component{
@@ -28,7 +29,7 @@ class Cart extends Component{
                        
                         <li className="collection-item avatar" key={item.id}>
                                     <div className="item-img"> 
-                                        <img src={item.img_url} alt={item.name} className=""/>
+                                    <Image item={item}/>
                                     </div>
                                 
                                     <div className="item-desc">

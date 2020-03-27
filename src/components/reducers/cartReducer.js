@@ -1,4 +1,4 @@
-import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY, GET_ITEMS, SORT_ITEMS, FILTERED_ITEMS, SEARCH_STRING } from '../actions/action-types/cart-actions'
+import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY, GET_ITEMS, SORT_ITEMS, FILTERED_ITEMS, SEARCH_STRING, CLEAR_ITEMS } from '../actions/action-types/cart-actions'
 
 
 const initState = {
@@ -30,7 +30,8 @@ const cartReducer= (state = initState,action)=>{
         return {
             ...state,
             items: action.payload,
-            newValue: action.newValue
+            newValue: action.newValue,
+            originalItems: action.originalItems
         }
     }
 
@@ -40,6 +41,13 @@ const cartReducer= (state = initState,action)=>{
             items: action.payload,
             newValue: action.searchString,
             originalItems: action.originalItems
+        }
+    }
+
+    if(action.type === CLEAR_ITEMS) {
+        return {
+            ...state,
+            addedItems: []
         }
     }
    

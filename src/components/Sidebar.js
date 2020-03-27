@@ -22,21 +22,24 @@ class Sidebar extends Component{
         let newValue = this.state.value;
 
         let {items} = this.props;
-        let filteredItems = items.filter((item) => {
+        let toBeFilterd = (this.props.originalItems && this.props.originalItems.length > 0) ? this.props.originalItems : this.props.items;
+        let filteredItems = toBeFilterd.filter((item) => {
             if(item.price < newValue[1] && item.price > newValue[0] ) {
                 return item;
             }
         });
 
-        this.props.filteredItems(newValue, filteredItems);
+        this.props.filteredItems(newValue, filteredItems, toBeFilterd);
     }
 
     render(){
 
         let min, max, marks;
         if(this.props.items.length) {
-            min = this.props.items.reduce((min, b) => Math.min(min, b.price), this.props.items[0].price);
-            max = this.props.items.reduce((max, b) => Math.max(max, b.price), this.props.items[0].price);
+            // min = this.props.items.reduce((min, b) => Math.min(min, b.price), this.props.items[0].price);
+            // max = this.props.items.reduce((max, b) => Math.max(max, b.price), this.props.items[0].price);
+            min = this.state.value[0];
+            max = this.state.value[1];
             marks = [{"value": min, "label": min }, {"value": max, "label": max } ]
         }
 
@@ -44,8 +47,8 @@ class Sidebar extends Component{
         return(
             <div>
                 <Slider
-                    min = {min}
-                    max = {max}
+                    min = {150}
+                    max = {700}
                     value={this.state.value}
                     onChange={this.handleChange}
                     valueLabelDisplay="auto"
@@ -53,12 +56,12 @@ class Sidebar extends Component{
                     marks={marks}
                 />
 
-            <div className="apply-btn">
-                <button className="waves-effect waves-light btn blue" 
-                    onClick={()=>{this.handleApply()}}>
-                    Apply
-                </button>
-            </div>
+                <div className="apply-btn">
+                    <button className="waves-effect waves-light btn blue" 
+                        onClick={()=>{this.handleApply()}}>
+                        Apply
+                    </button>
+                </div>
             </div>
         )
     }
@@ -67,13 +70,14 @@ class Sidebar extends Component{
 const mapStateToProps = (state)=>{
     return{
         items: state.items,
+        originalItems: state.originalItems
     }
 }
 
 //Add the dispatchers to events which will connect to redux later  
 const mapDispatchToProps= (dispatch)=>{
     return{
-        filteredItems: (newValue, payload) => {dispatch(filteredItems(newValue, payload))}
+        filteredItems: (newValue, payload, originalItems) => {dispatch(filteredItems(newValue, payload, originalItems))}
     }
 }
 

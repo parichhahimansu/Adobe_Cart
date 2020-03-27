@@ -1,4 +1,4 @@
-import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY, GET_ITEMS, SORT_ITEMS, FILTERED_ITEMS, SEARCH_STRING } from './action-types/cart-actions'
+import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY, GET_ITEMS, SORT_ITEMS, FILTERED_ITEMS, SEARCH_STRING, CLEAR_ITEMS } from './action-types/cart-actions'
 
 // Load intial items
 export const getItems = (payload) => {
@@ -46,11 +46,12 @@ export const sortItems = (sortType, payload) => {
     }
 }
 // Filter items
-export const filteredItems = (newValue, payload) => {
+export const filteredItems = (newValue, payload, originalItems) => {
     return {
         type: FILTERED_ITEMS,
         newValue,
-        payload
+        payload,
+        originalItems
     }
 }
 
@@ -61,5 +62,13 @@ export const searchItems = (searchString, payload, originalItems) => {
         searchString,
         payload,
         originalItems
+    }
+}
+
+// Clear added items
+export const clearCart = (id) => {
+    return {
+        type: CLEAR_ITEMS,
+        id
     }
 }

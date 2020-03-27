@@ -14,6 +14,8 @@ import Divider from '@material-ui/core/Divider';
 import Sidebar from './Sidebar';
 import { useLocation } from 'react-router-dom'
 import Search from './Search';
+import Button from '@material-ui/core/Button';
+import {clearCart} from './actions/cartAction'
 
 const drawerWidth = 240;
 
@@ -54,6 +56,7 @@ const useStyles = makeStyles(theme => ({
     const classes = useStyles();
     let location = useLocation();
     let notify_cart = props.addedItems.length ? props.addedItems.length : "0";
+    let btnShow = props.addedItems.length ? true : false;
 
     return(
         <div className={classes.grow}>
@@ -96,7 +99,10 @@ const useStyles = makeStyles(theme => ({
               </Typography>
               <Sidebar/> 
           </div>
-          : null}
+          : btnShow ? <Button className="drawer-btn" variant="contained" onClick={() => props.clearCart()}>Clear cart</Button> :
+            <Button className="drawer-btn" variant="contained" color="primary">
+              <Link to="/Adobe_Cart" >Go to shop</Link></Button>
+          }
       </Drawer>
         </div>
     )
@@ -104,8 +110,14 @@ const useStyles = makeStyles(theme => ({
 
 const mapStateToProps = (state)=>{
     return{
-        addedItems: state.addedItems,
+        addedItems: state.addedItems
     }
 }
 
-export default connect(mapStateToProps)(Navbar)
+const mapDispatchToProps = (dispatch) => {
+  return{
+    clearCart: () => {dispatch(clearCart())}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
