@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { addToCart, getItems, sortItems, filteredItems } from './actions/cartAction'
 import HomeSummary from './HomeSummary';
 import { Link , CircularProgress, Typography } from '@material-ui/core';
+import Image from './Image'
 
 const axios = require('axios');
 
 var that;
 
- class Home extends Component{
-
+class Home extends Component{
+    
     //Add item to Cart
     handleClick = (id)=>{
         this.props.addToCart(id); 
@@ -55,6 +56,7 @@ var that;
         this.setState({value: newValue});
     };
 
+
     render(){
         let itemList;
 
@@ -72,7 +74,8 @@ var that;
                 return(
                     <div className="card" key={item.id}>
                         <div className="card-image">
-                            <img src={item.img_url} alt={item.name}/>
+                            {/* <img src={item.img_url} alt={item.name}/> */}
+                            <Image item={item}/>
                             <span className="card-title">{item.name}</span>
                         </div>
 
