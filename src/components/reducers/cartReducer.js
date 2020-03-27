@@ -47,7 +47,8 @@ const cartReducer= (state = initState,action)=>{
     if(action.type === CLEAR_ITEMS) {
         return {
             ...state,
-            addedItems: []
+            addedItems: [],
+            total: 0
         }
     }
    
