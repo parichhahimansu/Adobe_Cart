@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types';
 import { Slider } from '@material-ui/core';
 import { filteredItems } from './actions/cartAction'
 
@@ -34,11 +33,13 @@ class Sidebar extends Component{
 
     render(){
 
-        let min, max;
+        let min, max, marks;
         if(this.props.items.length) {
             min = this.props.items.reduce((min, b) => Math.min(min, b.price), this.props.items[0].price);
             max = this.props.items.reduce((max, b) => Math.max(max, b.price), this.props.items[0].price);
+            marks = [{"value": min, "label": min }, {"value": max, "label": max } ]
         }
+
 
         return(
             <div>
@@ -49,6 +50,7 @@ class Sidebar extends Component{
                     onChange={this.handleChange}
                     valueLabelDisplay="auto"
                     aria-labelledby="range-slider"
+                    marks={marks}
                 />
 
             <div className="apply-btn">
@@ -70,7 +72,6 @@ const mapStateToProps = (state)=>{
 
 //Add the dispatchers to events which will connect to redux later  
 const mapDispatchToProps= (dispatch)=>{
-    
     return{
         filteredItems: (newValue, payload) => {dispatch(filteredItems(newValue, payload))}
     }

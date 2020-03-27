@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addToCart, getItems, sortItems, filteredItems } from './actions/cartAction'
 import HomeSummary from './HomeSummary';
-import { Link , CircularProgress, Slider, Typography } from '@material-ui/core';
+import { Link , CircularProgress, Typography } from '@material-ui/core';
 
 const axios = require('axios');
 
@@ -61,12 +61,6 @@ var that;
         if(this.props.items.length) {
             const { items } = this.props;
 
-            // let filteredItems = items.filter((item) => {
-            //     if(item.price < newValue[1] && item.price > newValue[0] ) {
-            //         return item;
-            //     }
-            // });
-            
             itemList = items.map(item=>{
 
                 let quantity = "0";

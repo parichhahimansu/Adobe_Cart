@@ -6,3 +6,4 @@ export const ADD_QUANTITY = 'ADD_QUANTITY';
 export const GET_ITEMS = 'GET_ITEMS';
 export const SORT_ITEMS = 'SORT_ITEMS';
 export const FILTERED_ITEMS = 'FILTERED_ITEMS';
+export const SEARCH_STRING = 'SEARCH_STRING';
