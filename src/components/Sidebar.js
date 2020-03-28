@@ -10,7 +10,7 @@ class Sidebar extends Component{
         super(props);
 
         this.state = {
-            value: [150, 700]
+            value: [100, 750]
         }
     }
     
@@ -47,8 +47,8 @@ class Sidebar extends Component{
         return(
             <div>
                 <Slider
-                    min = {150}
-                    max = {700}
+                    min = {100}
+                    max = {750}
                     value={this.state.value}
                     onChange={this.handleChange}
                     valueLabelDisplay="auto"
