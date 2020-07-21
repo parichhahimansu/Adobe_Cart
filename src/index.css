@@ -192,3 +192,48 @@ input[type=text] {
   display: inline-block;
   width: 120px;
 }
+
+
+.test {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  justify-content: center;
+ 
+}
+
+input {
+  border: 1px solid #ccc;
+}
+
+[type="checkbox"] {
+  opacity: 1 !important;
+  right: -20px;
+  top:5px;
+  pointer-events: initial !important;
+}
+
+.listsItems {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+
+span{
+  position: relative;
+}
+
+li {
+  width:200px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.turnBlue {
+  color: blue;
+  display: flex;
+  width: 100%;
+}
