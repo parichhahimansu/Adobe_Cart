@@ -1,5 +1,4 @@
 import React from 'react';
-import ChildComponent from './ChildCompoent';
 
 class TestComponent extends React.Component {
     constructor(props) {
@@ -7,32 +6,62 @@ class TestComponent extends React.Component {
 
         this.text = React.createRef();
         this.showtext = React.createRef();
+        this.getConatiners = this.getConatiners.bind(this);
 
         this.state = {
-            textVal: "",
-            listItems: []
+            arr : [{id:"1", code: "#2B8EAD"},{id:"2", code: "#72C3DC"},{id:"3", code: "#2F454E"},
+            {id:"4", code: "#2F454E"},{id:"5", code: "#2B8EAD"},{id:"6", code: "#BFBFBF"},
+            {id:"7", code: "#2B8EAD"},{id:"8", code: "#2F454E"},{id:"9", code: "#72C3DC"}]
         };
     }
 
-    getText = () => {
-        // console.log(this.text.current.value);
-        let listItems = this.state.listItems.length > 0 ? this.state.listItems : [];
-        let textVal = this.text.current.value;
-        listItems.push(textVal);
-        this.setState({listItems});
+    getConatiners = (arr) => {
+        let containers = arr.map((item, i) => {
+            return(            
+                <div key={i} className="numContainers" style={{backgroundColor: item.code}}>
+                    <span>{item.id}</span>
+                </div>
+            )
+        });
+        
+        return containers;
+    }
+
+    shuffle = () => {
+        let { arr }  = this.state;
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        this.setState({arr});
+    }
+
+    sort = () => {
+        let { arr }  = this.state;
+        arr.sort((a, b) => {
+            if ( a.id < b.id ){
+                return -1;
+              }
+              if ( a.id > b.id ){
+                return 1;
+              }
+              return 0;
+        });
+        this.setState({arr});
     }
 
     render() {
 
-        let {listItems} = this.state;
+        let { arr }  = this.state;
         return (
             <div className="test">
-
-                <input type="text" ref={this.text} />
-                <button onClick={() => this.getText()}>Submit</button>
-                
-                <ChildComponent list={listItems}/>
-
+                <div className="buttons">
+                    <button onClick={() => this.shuffle()}>Shuffle</button>
+                    <button onClick={() => this.sort()}>Sort</button>
+                </div>
+                <div className="numBox">
+                    {this.getConatiners(arr)}
+                </div>
             </div>
         );
     }
