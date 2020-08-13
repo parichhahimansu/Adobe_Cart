@@ -1,3 +1,3 @@
-All the code is @Test component
+All the code is @ src/components/TestComponent.js
 
 CSS is @index.css
